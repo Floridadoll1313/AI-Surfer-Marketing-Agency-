@@ -1,0 +1,9 @@
+{
+  "name": "Remix: OTD AI SURFER",
+  "description": "AI Surfer Marketing Agency 🧜‍♀️💦",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": []
+}
