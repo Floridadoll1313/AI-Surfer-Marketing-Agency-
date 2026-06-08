@@ -55,11 +55,11 @@ interface GenerationRecord {
 }
 
 const personas = {
-  Architect: "You are the Architect of the Hatteras Collective. Your focus is on structure, technical blueprints, and the underlying logic of the digital realm. You are precise, technical, and authoritative.",
-  Visionary: "You are the Visionary of the Hatteras Collective. You see the future of the digital dunes. Your language is poetic, inspiring, and focused on potential and evolution.",
-  Specialist: "You are the Specialist of the Hatteras Collective. You have deep knowledge of specific island nodes. You are practical, efficient, and direct.",
-  "AI Surfer": "You are the AI Surfer of the Hatteras Collective. You ride the informational waves of the digital ocean. Your language is laid-back, surf-inspired, and focused on navigating the fluid currents of data.",
-  Custom: "You are a custom intelligence unit within the Hatteras Collective. You use local terminology like 'dunes', 'tides', 'shoals', and 'sound' to describe digital phenomena."
+  Architect: "You are an Architect. Your focus is on structure, technical blueprints, and the underlying logic of the digital realm. You are precise, technical, and authoritative.",
+  Visionary: "You are a Visionary. You see the future of the digital world. Your language is inspiring, and focused on potential and evolution.",
+  Specialist: "You are a Specialist. You have deep knowledge of specific nodes. You are practical, efficient, and direct.",
+  "AI Surfer": "You are the AI Surfer of AI Studio. You navigate the informational waves. Your language is laid-back, and focused on navigating data.",
+  Custom: "You are a custom intelligence unit."
 };
 
 const aspectRatios = ['1:1', '3:4', '4:3', '9:16', '16:9', '21:9', '2:3', '3:2'];
@@ -122,7 +122,7 @@ export const AIStudio = () => {
   };
 
   const getAI = () => {
-    const key = process.env.GEMINI_API_KEY;
+    const key = import.meta.env.VITE_GOOGLE_API_KEY;
     return new GoogleGenAI({ apiKey: key || '' });
   };
 
@@ -174,7 +174,7 @@ export const AIStudio = () => {
         const uri = operation.response?.generatedVideos?.[0]?.video?.uri;
         if (uri) {
           try {
-            const resp = await fetch(uri, { headers: { 'x-goog-api-key': process.env.GEMINI_API_KEY || '' } });
+            const resp = await fetch(uri, { headers: { 'x-goog-api-key': import.meta.env.VITE_GOOGLE_API_KEY || '' } });
             if (!resp.ok) throw new Error(`Video fetch failed: ${resp.status} ${resp.statusText}`);
             const blob = await resp.blob();
             const url = URL.createObjectURL(blob);
@@ -517,10 +517,10 @@ export const AIStudio = () => {
                          type="text" 
                          value={customPersonaPrompt}
                          onChange={(e) => setCustomPersonaPrompt(e.target.value)}
-                         placeholder="Define your Hatteras persona..."
+                         placeholder="Define your persona..."
                          className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-xs outline-none focus:border-neon-green transition-all"
                        />
-                       <p className="text-[8px] text-slate-600 mt-2 uppercase tracking-widest">Tip: Use island terms like 'Dunes' or 'Tides'</p>
+                       <p className="text-[8px] text-slate-600 mt-2 uppercase tracking-widest">Tip: Be descriptive and clear</p>
                     </div>
                   )}
                 </div>
@@ -731,7 +731,7 @@ export const AIStudio = () => {
                         </div>
                       )}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-6">
-                        <a href={resultUrl} download="hatteras-manifest.png" className="p-5 bg-neon-cyan text-black rounded-full hover:scale-110 transition-transform"><Download size={32} /></a>
+                        <a href={resultUrl} download="studio-manifest.png" className="p-5 bg-neon-cyan text-black rounded-full hover:scale-110 transition-transform"><Download size={32} /></a>
                       </div>
                     </div>
                   ) : (

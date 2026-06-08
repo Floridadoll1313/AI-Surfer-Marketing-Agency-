@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Zap, Shield, Crown, AlertOctagon } from 'lucide-react';
 import { useAuth } from '../components/AuthProvider';
@@ -18,25 +18,6 @@ export const Pricing = () => {
   const { user } = useAuth();
   const location = useLocation();
   const needsUpgrade = location.state?.needsUpgrade;
-  
-  useEffect(() => {
-    // Inject Stripe Pricing Table script safely
-    const scriptId = 'stripe-pricing-script';
-    let script = document.getElementById(scriptId) as HTMLScriptElement;
-    
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.src = 'https://js.stripe.com/v3/pricing-table.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-
-    return () => {
-      // We don't necessarily need to remove the Stripe script, as it can be reused.
-      // Removing it might cause issues if the web component requires it across re-renders.
-    };
-  }, []);
 
   return (
     <div className="max-w-[1400px] mx-auto py-24 px-6 md:px-12">

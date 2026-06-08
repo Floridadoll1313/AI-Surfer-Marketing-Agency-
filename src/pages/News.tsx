@@ -21,24 +21,24 @@ export const News = () => {
       const chatContext = chatSnap.docs.map(doc => doc.data().content).join('\n');
       const storiesContext = storiesSnap.docs.map(doc => doc.data().content).join('\n');
 
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY });
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-latest",
-        contents: `Generate a "Daily Briefing" for the Hatteras Digital Collective. 
+        contents: `Generate a "Daily Briefing" for AI Studio. 
         Context from recent activity:
         Recent Chat: ${chatContext}
         Recent Stories: ${storiesContext}
         
-        Style: Sophisticated, futuristic, architectural, and slightly oceanic. 
+        Style: Sophisticated, futuristic, and architectural. 
         Sections: 
-        1. Neural Status (Overall ecosystem health)
-        2. Collective Highlights (Key events or discussions)
-        3. Manifestation Trends (What people are building)
+        1. Ecosystem Status (Overall ecosystem health)
+        2. Studio Highlights (Key events or discussions)
+        3. Campaign Trends (What people are building)
         4. Architect's Wisdom (A short inspiring quote)
         
         Keep it concise and formatted in Markdown.`,
         config: {
-          systemInstruction: "You are the Chief Editor of Hatteras Daily, the official news node of the Digital Collective."
+          systemInstruction: "You are the Chief Editor of AI Studio Daily, the official news node of the agency."
         }
       });
 
@@ -68,7 +68,7 @@ export const News = () => {
             <Newspaper className="text-neon-green" size={32} />
           </div>
           <div>
-            <h1 className="text-5xl font-black italic tracking-tighter uppercase">Hatteras Daily</h1>
+            <h1 className="text-5xl font-black italic tracking-tighter uppercase">Studio Daily</h1>
             <p className="text-[10px] tracking-[0.4em] text-slate-500 uppercase font-bold">Neural News Node</p>
           </div>
         </div>

@@ -8,43 +8,43 @@ import { db } from '../lib/firebase';
 
 const villages = [
   {
-    name: 'Rodanthe',
-    title: 'Web Builds',
-    description: 'Frontend & Backend Architecture. High-performance digital structures.',
+    name: 'Web Builds',
+    title: 'Frontend & Backend',
+    description: 'High-performance digital structures and architectures.',
     icon: Globe,
-    path: '/rodanthe',
+    path: '/web-builds',
     color: 'from-cyan-500 to-blue-600'
   },
   {
-    name: 'Avon',
-    title: 'Game Builds',
+    name: 'Game Builds',
+    title: 'Interactive Media',
     description: 'Immersive systems and interactive experiences.',
     icon: Zap,
-    path: '/avon',
+    path: '/game-builds',
     color: 'from-yellow-400 to-orange-500'
   },
   {
-    name: 'Buxton',
-    title: 'Workflows',
+    name: 'Workflows',
+    title: 'Data Pipelines',
     description: 'Active automation pipelines and business logic.',
     icon: Database,
-    path: '/buxton',
+    path: '/workflows',
     color: 'from-purple-500 to-pink-600'
   },
   {
-    name: 'Frisco',
-    title: 'Automations',
+    name: 'Automations',
+    title: 'Workspace Core',
     description: 'Live system feeds and autonomous agents.',
     icon: Bot,
-    path: '/frisco',
+    path: '/automations',
     color: 'from-green-400 to-emerald-600'
   },
   {
-    name: 'Hatteras',
-    title: 'The Vault',
+    name: 'The Vault',
+    title: 'Process Maps',
     description: 'Confidential process maps and secure SOPs.',
     icon: Lock,
-    path: '/hatteras',
+    path: '/vault',
     color: 'from-red-500 to-rose-700'
   }
 ];
@@ -110,17 +110,17 @@ export const Home = () => {
           transition={{ duration: 5, repeat: Infinity }}
           className="animate-2"
         >
-          <h2 className="text-6xl md:text-9xl font-black italic tracking-tighter mb-6 rainbow-text leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-            NEON REEF
+          <h2 className="text-6xl md:text-9xl font-black italic tracking-tighter mb-6 rainbow-text leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] uppercase">
+            AI Studio
           </h2>
         </motion.div>
         
         <p className="text-neon-cyan text-sm font-black tracking-[0.5em] uppercase mb-8">
-          Hatteras Digital Collective v3.1
+          AI Surfer, Marketing Agency
         </p>
         
         <p className="text-slate-400 max-w-2xl mx-auto text-lg font-light tracking-wide leading-relaxed">
-          Navigating the currents of AI and automation. Explore the Hatteras villages or harness the power of the Neural Reef.
+          Navigating the currents of AI and automation. Explore our digital marketing tools and architectural ecosystems.
         </p>
       </motion.div>
 
@@ -164,7 +164,7 @@ export const Home = () => {
             <div className="relative z-10">
               <h3 className="text-4xl font-black italic mb-4 uppercase tracking-tighter text-neon-cyan">The Sanctuary</h3>
               <p className="text-slate-400 text-lg font-light leading-relaxed mb-8 max-w-sm">
-                Access the inner circle. Neural synthesis tools, private chat protocols, and proprietary Hatteras data nodes.
+                Access the inner circle. Neural synthesis tools, private chat protocols, and proprietary marketing architectures.
               </p>
               <Link 
                 to="/sanctuary"
@@ -365,7 +365,7 @@ export const Home = () => {
         <div className="absolute inset-0 bg-neon-cyan/5 animate-pulse" />
         <div className="relative z-10">
           <h3 className="text-4xl md:text-6xl font-black italic mb-6 tracking-tighter">READY TO SURF THE AI WAVE?</h3>
-          <p className="text-slate-400 mb-10 text-lg font-light tracking-wide max-w-2xl mx-auto">Join the elite circle of digital architects and automate your future in the Neon Reef.</p>
+          <p className="text-slate-400 mb-10 text-lg font-light tracking-wide max-w-2xl mx-auto">Join the elite circle of digital architects and automate your future marketing efforts.</p>
           <div className="flex flex-wrap justify-center gap-6">
             <Link 
               to="/chat"

@@ -13,12 +13,12 @@ interface Manifestation {
 }
 
 const manifestations: Manifestation[] = [
-  { id: '1', title: 'Neon Reef Core', author: 'OceanTide', image: 'https://picsum.photos/seed/reef/800/800', prompt: 'Futuristic coral reef with neon cyan bioluminescence, cinematic lighting, 8k', likes: 124, category: 'Image' },
+  { id: '1', title: 'Neon Setup Core', author: 'CyberTide', image: 'https://picsum.photos/seed/setup/800/800', prompt: 'Futuristic setup with neon cyan bioluminescence, cinematic lighting, 8k', likes: 124, category: 'Image' },
   { id: '2', title: 'Neural Architect', author: 'SkyWave', image: 'https://picsum.photos/seed/architect/800/1200', prompt: 'Cyberpunk architect overlooking a digital city, holographic blueprints, purple and pink aesthetic', likes: 89, category: 'Image' },
   { id: '3', title: 'Data Stream', author: 'NeuralNode', image: 'https://picsum.photos/seed/stream/1200/800', prompt: 'Abstract representation of data flowing through a neural network, glowing lines, dark background', likes: 210, category: 'Image' },
   { id: '4', title: 'Temporal Drift', author: 'TimeSurfer', image: 'https://picsum.photos/seed/drift/800/800', prompt: 'A clock melting into a digital ocean, surrealism, neon accents', likes: 56, category: 'Prompt' },
-  { id: '5', title: 'Cyber Hatteras', author: 'IslandDev', image: 'https://picsum.photos/seed/hatteras/800/800', prompt: 'The Hatteras lighthouse in a futuristic cyberpunk setting, neon lights, stormy digital sky', likes: 167, category: 'Image' },
-  { id: '6', title: 'Hatteras AI', author: 'BotMaster', image: 'https://picsum.photos/seed/ai/800/800', prompt: 'A brain made of glowing islands in a vast digital sea', likes: 342, category: 'Image' },
+  { id: '5', title: 'Cyber Nexus', author: 'SystemDev', image: 'https://picsum.photos/seed/nexus/800/800', prompt: 'A nexus tower in a futuristic cyberpunk setting, neon lights, stormy digital sky', likes: 167, category: 'Image' },
+  { id: '6', title: 'Studio AI', author: 'BotMaster', image: 'https://picsum.photos/seed/ai/800/800', prompt: 'A brain connecting data centers in a vast digital matrix', likes: 342, category: 'Image' },
 ];
 
 export const Marketplace = () => {

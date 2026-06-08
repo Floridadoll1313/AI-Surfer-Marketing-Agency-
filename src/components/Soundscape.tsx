@@ -43,7 +43,7 @@ export const Soundscape = () => {
       const prompt = `Generate a 30-second ambient, futuristic soundscape for a digital island called "${pageName}". 
       Style: Ethereal, synth-driven, cyberpunk, oceanic. No vocals.`;
 
-      const key = process.env.API_KEY || process.env.GEMINI_API_KEY;
+      const key = import.meta.env.VITE_GOOGLE_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
       if (!key) {
         console.warn('API key not found, soundscape generation skipped.');
         return;

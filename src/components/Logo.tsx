@@ -20,8 +20,8 @@ export const Logo: React.FC<LogoProps> = ({ className, size = "h-12", withTaglin
           <span className="text-xl font-black italic tracking-tighter uppercase text-white leading-none">
             Ocean Tide Drop
           </span>
-          <span className="text-[8px] font-black tracking-[0.4em] uppercase text-slate-500 mt-1">
-            Hatteras Digital Collective
+          <span className="text-[10px] font-black tracking-[0.4em] uppercase text-neon-cyan mt-1">
+            AI Studio
           </span>
         </div>
       )}

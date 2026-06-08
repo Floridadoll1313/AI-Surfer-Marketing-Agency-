@@ -12,7 +12,7 @@ export const Workflows = () => {
       >
         <div className="flex items-center gap-4 mb-4">
           <Database className="text-neon-cyan" size={40} />
-          <h1 className="text-5xl font-black italic tracking-tighter">BUXTON: WORKFLOWS</h1>
+          <h1 className="text-5xl font-black italic tracking-tighter">WORKFLOWS</h1>
         </div>
         <p className="text-slate-400 text-xl font-light tracking-wide">Active automation pipelines and business logic.</p>
       </motion.div>

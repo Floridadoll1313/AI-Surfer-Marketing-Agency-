@@ -38,27 +38,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [accessToken, setAccessToken] = useState<string | null>(null);
 
   const checkMemberStatus = async () => {
-    if (!auth.currentUser) return;
-    const userRef = doc(db, 'users', auth.currentUser.uid);
-    const userSnap = await getDoc(userRef);
-    if (userSnap.exists()) {
-      const data = userSnap.data();
-      const admin = data.role === 'admin' || auth.currentUser.email === 'oceantidedrop@gmail.com';
-      const member = data.subscriptionStatus === 'active' || admin;
-      setIsMember(member);
-      if (admin) {
-        setSubscriptionTier('architect');
-      } else if (member) {
-        setSubscriptionTier(data.subscriptionTier === 'architect' ? 'architect' : 'technologist');
-      } else {
-        setSubscriptionTier('none');
+    if (!auth || !db || !auth.currentUser) return;
+    try {
+      const userRef = doc(db, 'users', auth.currentUser.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        const data = userSnap.data();
+        const admin = data.role === 'admin' || auth.currentUser.email === 'oceantidedrop@gmail.com';
+        const member = data.subscriptionStatus === 'active' || admin;
+        setIsMember(member);
+        if (admin) {
+          setSubscriptionTier('architect');
+        } else if (member) {
+          setSubscriptionTier(data.subscriptionTier === 'architect' ? 'architect' : 'technologist');
+        } else {
+          setSubscriptionTier('none');
+        }
       }
+    } catch {
+      // Ignore failures
     }
   };
 
   useEffect(() => {
     const checkRedirectResult = async () => {
       try {
+        if (!auth) return;
         const result = await getRedirectResult(auth);
         if (result) {
           const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -72,6 +77,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     };
     checkRedirectResult();
+
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       setUser(firebaseUser);
@@ -152,8 +162,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async () => {
+    if (!auth) {
+      console.warn("Firebase Auth is not initialized. Check your credentials.");
+      return;
+    }
     const provider = new GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/chat');
+    provider.addScope('https://www.googleapis.com/auth/tasks');
+    provider.addScope('https://www.googleapis.com/auth/keep');
+    provider.addScope('https://www.googleapis.com/auth/calendar');
+    provider.addScope('https://www.googleapis.com/auth/forms.body');
+    provider.addScope('https://www.googleapis.com/auth/gmail.readonly');
     try {
       const result = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -172,6 +191,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const logout = async () => {
+    if (!auth) return;
     try {
       await signOut(auth);
       cachedAccessToken = null;

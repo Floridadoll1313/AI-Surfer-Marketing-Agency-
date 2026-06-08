@@ -28,14 +28,14 @@ export const MembersArea = () => {
 
   const toolCategories = [
     {
-      title: "Hatteras Business Nodes",
+      title: "AI Studio Components",
       description: "Proprietary digital engines, builds, and secure automated environments.",
       items: [
-        { name: 'Rodanthe Web Builds', path: '/rodanthe', icon: Globe, color: 'text-neon-cyan', bg: 'bg-neon-cyan/5', detail: 'Frontend & Backend Architecture', tier: 'technologist' },
-        { name: 'Avon Game Builds', path: '/avon', icon: Zap, color: 'text-neon-yellow', bg: 'bg-neon-yellow/5', detail: 'Interactive Media Systems', tier: 'technologist' },
-        { name: 'Buxton Workflows', path: '/buxton', icon: Database, color: 'text-neon-purple', bg: 'bg-neon-purple/5', detail: 'Active Pipelines & Logic', tier: 'technologist' },
-        { name: 'Frisco Automations', path: '/frisco', icon: Bot, color: 'text-neon-green', bg: 'bg-neon-green/5', detail: 'Autonomous Systems', tier: 'architect' },
-        { name: 'Hatteras Vault', path: '/hatteras', icon: Lock, color: 'text-neon-red', bg: 'bg-neon-red/5', detail: 'Confidential Process Maps & SOPs', tier: 'architect' },
+        { name: 'Web Builds', path: '/web-builds', icon: Globe, color: 'text-neon-cyan', bg: 'bg-neon-cyan/5', detail: 'Frontend & Backend Architecture', tier: 'technologist' },
+        { name: 'Game Builds', path: '/game-builds', icon: Zap, color: 'text-neon-yellow', bg: 'bg-neon-yellow/5', detail: 'Interactive Media Systems', tier: 'technologist' },
+        { name: 'Workflows', path: '/workflows', icon: Database, color: 'text-neon-purple', bg: 'bg-neon-purple/5', detail: 'Active Pipelines & Logic', tier: 'technologist' },
+        { name: 'Automations', path: '/automations', icon: Bot, color: 'text-neon-green', bg: 'bg-neon-green/5', detail: 'Autonomous Systems', tier: 'architect' },
+        { name: 'Vault', path: '/vault', icon: Lock, color: 'text-neon-red', bg: 'bg-neon-red/5', detail: 'Confidential Process Maps & SOPs', tier: 'architect' },
       ]
     },
     {
@@ -49,11 +49,10 @@ export const MembersArea = () => {
     },
     {
       title: "Collective Identity",
-      description: "Connect and synchronize with the Hatteras member network.",
+      description: "Connect and synchronize with the member network.",
       items: [
         { name: 'Sanctuary Chat', path: '/chat', icon: MessageSquare, color: 'text-neon-cyan', bg: 'bg-neon-cyan/5', detail: 'Encrypted Collective Stream', tier: 'technologist' },
         { name: 'Architect Directory', path: '/directory', icon: Users, color: 'text-neon-yellow', bg: 'bg-neon-yellow/5', detail: 'Member Registry', tier: 'technologist' },
-        { name: 'Tidal Map', path: '/map', icon: MapIcon, color: 'text-neon-pink', bg: 'bg-neon-pink/5', detail: 'Hatteras Interactive Nodes', tier: 'technologist' },
       ]
     },
     {
@@ -115,7 +114,7 @@ export const MembersArea = () => {
             transition={{ delay: 0.2 }}
             className="text-slate-400 max-w-2xl text-xl font-light tracking-wide leading-relaxed italic"
           >
-            "Where the neural dunes meet the digital tide." Explore your exclusive toolset and connect with the Hatteras architects.
+            "Where design meets performance." Explore your exclusive toolset and connect with the other architects.
           </motion.p>
         </header>
 
@@ -202,8 +201,8 @@ export const MembersArea = () => {
           <div className="relative z-10 flex flex-col items-center">
              <Brain className="text-neon-cyan mb-8 animate-pulse" size={48} />
              <h3 className="text-3xl font-black italic mb-4 tracking-tighter uppercase">Sync Completed</h3>
-             <p className="text-slate-400 mb-8 max-w-xl text-sm font-light tracking-widest leading-relaxed">
-               Your neural connection to the Hatteras Collective is optimized. All tools are currently functioning at peak performance.
+              <p className="text-slate-400 mb-8 max-w-xl text-sm font-light tracking-widest leading-relaxed">
+               Your connection to the network is optimized. All tools are currently functioning at peak performance.
              </p>
              <Link 
                to="/dashboard"

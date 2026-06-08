@@ -38,9 +38,9 @@ const personaPresets = [
   { name: 'The Architect', description: 'Structured, technical, systematic' },
   { name: 'The Visionary', description: 'Creative, abstract, expansionist' },
   { name: 'The Specialist', description: 'Concise, direct, efficient' },
-  { name: 'The Old Salt', description: 'Hatteras-wise, nautical, direct' },
-  { name: 'The Reef Guardian', description: 'Protective, ecological, deep-core' },
-  { name: 'The Storm Chaser', description: 'Bold, high-energy, risk-taking' },
+  { name: 'The Strategist', description: 'Analytical, business-focused, direct' },
+  { name: 'The Guardian', description: 'Protective, secure, deep-core' },
+  { name: 'The Innovator', description: 'Bold, high-energy, risk-taking' },
 ];
 
 export const PromptToolkit = () => {
@@ -84,7 +84,7 @@ export const PromptToolkit = () => {
     setTemplates([]);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY || '' });
       
       const personaList = selectedPersonas.map((p, i) => `${i+1}. "${p}"`).join('\n');
       const prompt = `You are a world-class Prompt Engineer. 

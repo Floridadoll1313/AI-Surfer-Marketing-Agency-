@@ -67,12 +67,12 @@ export const Profile = () => {
     setError(null);
 
     try {
-      const key = process.env.GEMINI_API_KEY;
+      const key = import.meta.env.VITE_GOOGLE_API_KEY;
       const ai = new GoogleGenAI({ apiKey: key || '' });
       const response = await ai.models.generateContent({
         model: 'gemini-3.1-flash-image-preview',
         contents: {
-          parts: [{ text: `A futuristic, high-tech digital architect avatar for a user named ${profile?.displayName || 'Architect'}. Neon aesthetic, cyberpunk style, professional and clean, inspired by the Hatteras Collective and the deep sound.` }],
+          parts: [{ text: `A futuristic, high-tech digital architect avatar for a user named ${profile?.displayName || 'Architect'}. Neon aesthetic, cyberpunk style, professional and clean, inspired by AI Studio.` }],
         },
         config: {
           imageConfig: {
@@ -105,14 +105,14 @@ export const Profile = () => {
     setError(null);
 
     try {
-      const key = process.env.GEMINI_API_KEY;
+      const key = import.meta.env.VITE_GOOGLE_API_KEY;
       const ai = new GoogleGenAI({ apiKey: key || '' });
-      const bioSeed = profile.bio || `A digital architect exploring the Hatteras Collective.`;
+      const bioSeed = profile.bio || `A digital architect exploring AI Studio.`;
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
-        contents: `Refine this user identity matrix. Current data: ${bioSeed}. Enhance it to be a professional, high-impact biography for a Digital Architect named ${profile.displayName} with a distinct Hatteras Island aesthetic. Incorporate terminology like 'Neural Dunes', 'Tidal Streams', 'Deep Sound', and 'Shoal Logic'. Ensure it remains professional yet deeply evocative of the digital collective. Use 'Hatteras' specifically if appropriate. Limit: 280 characters.`,
+        contents: `Refine this user identity matrix. Current data: ${bioSeed}. Enhance it to be a professional, high-impact biography for a Digital Architect named ${profile.displayName}. Ensure it remains professional yet deeply evocative of a digital marketing agency. Limit: 280 characters.`,
         config: {
-          systemInstruction: "You are the Node Intelligence of the Hatteras Collective. Your directive is to synthesize professional identities that bridge technical mastery and the island's organic rhythms. Your tone is technical, cryptic, and authoritative. You transform simple descriptions into powerful neural blueprints."
+          systemInstruction: "You are the Node Intelligence of AI Studio. Your directive is to synthesize professional identities that bridge technical mastery and marketing. Your tone is technical and authoritative. You transform simple descriptions into powerful neural blueprints."
         }
       });
 
@@ -288,7 +288,7 @@ export const Profile = () => {
                   value={profile?.location || ''}
                   onChange={(e) => setProfile(p => p ? { ...p, location: e.target.value } : null)}
                   className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 focus:border-neon-cyan outline-none transition-colors text-white"
-                  placeholder="e.g. Hatteras Island, NC"
+                  placeholder="e.g. San Francisco, CA"
                 />
               </div>
 

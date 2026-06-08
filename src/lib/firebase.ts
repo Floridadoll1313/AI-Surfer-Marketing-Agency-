@@ -1,14 +1,51 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import firebaseConfig from '../../firebase-applet-config.json';
+import defaultFirebaseConfig from '../../firebase-applet-config.json';
+
+const sanitize = (val?: string) => {
+  if (!val) return val;
+  return val.replace(/"/g, '').trim();
+};
+
+const customConfig = {
+  apiKey: sanitize(import.meta.env.VITE_FIREBASE_API_KEY),
+  authDomain: sanitize(import.meta.env.VITE_FIREBASE_AUTH_DOMAIN),
+  projectId: sanitize(import.meta.env.VITE_FIREBASE_PROJECT_ID),
+  storageBucket: sanitize(import.meta.env.VITE_FIREBASE_STORAGE_BUCKET),
+  messagingSenderId: sanitize(import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID),
+  appId: sanitize(import.meta.env.VITE_FIREBASE_APP_ID),
+};
+
+const hasCustomConfig = Boolean(customConfig.apiKey && customConfig.projectId && customConfig.appId);
+const firebaseConfig = hasCustomConfig ? customConfig : defaultFirebaseConfig;
 
 // Initialize Firebase SDK
-const app = initializeApp(firebaseConfig);
+let app;
+try {
+  app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+} catch (e) {
+  console.error("Error initializing primary Firebase config:", e);
+  try {
+    app = !getApps().length ? initializeApp(defaultFirebaseConfig) : getApp();
+  } catch (err) {
+    console.error("Critical error initializing fallback Firebase:", err);
+    // Create a dummy app/mock to prevent the entire UI from crashing
+    app = {} as any;
+  }
+}
 
-// Initialize Firestore with the specific database ID from config
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
-export const auth = getAuth(app);
+
+export let db: any = null;
+export let auth: any = null;
+
+try {
+  // @ts-ignore
+  db = getFirestore(app);
+  auth = getAuth(app);
+} catch (e) {
+  console.error("Critical error initializing Firestore or Auth:", e);
+}
 
 export enum OperationType {
   CREATE = 'create',

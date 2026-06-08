@@ -6,11 +6,11 @@ import { useAuth } from './AuthProvider';
 
 const navItems = [
   { name: 'Home', path: '/', icon: Home },
-  { name: 'Rodanthe', path: '/rodanthe', icon: Globe },
-  { name: 'Avon', path: '/avon', icon: Zap },
-  { name: 'Buxton', path: '/buxton', icon: Database },
-  { name: 'Frisco', path: '/frisco', icon: Bot },
-  { name: 'Hatteras', path: '/hatteras', icon: Lock },
+  { name: 'Web Builds', path: '/web-builds', icon: Globe },
+  { name: 'Game Builds', path: '/game-builds', icon: Zap },
+  { name: 'Workflows', path: '/workflows', icon: Database },
+  { name: 'Automations', path: '/automations', icon: Bot },
+  { name: 'Vault', path: '/vault', icon: Lock },
   { name: 'Memorial', path: '/memorial', icon: Heart },
   { name: 'Academy', path: '/academy', icon: Video },
   { name: 'Surfer', path: '/surfer', icon: Sparkles },

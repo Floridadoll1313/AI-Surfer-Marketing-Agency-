@@ -79,7 +79,7 @@ export const Dashboard = () => {
       if (neuralThought) return;
       setIsGeneratingThought(true);
       try {
-        const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+        const genAI = new GoogleGenAI({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY || '' });
         const result = await genAI.models.generateContent({
           model: "gemini-3-flash-preview",
           contents: [{ role: 'user', parts: [{ text: "Give a very short, futuristic, cyberpunk-style cryptic 'thought of the day' for a digital citizen on a neon island. Max 15 words." }] }]
@@ -104,7 +104,6 @@ export const Dashboard = () => {
     { name: 'Member Chat', path: '/chat', icon: MessageSquare, color: 'text-neon-green', bg: 'bg-neon-green/5' },
     { name: 'Member Directory', path: '/directory', icon: Sparkles, color: 'text-neon-yellow', bg: 'bg-neon-yellow/5' },
     { name: 'Supabase Vault', path: '/supabase-vault', icon: Database, color: 'text-neon-purple', bg: 'bg-neon-purple/5' },
-    { name: 'Hatteras Map', path: '/map', icon: Globe, color: 'text-neon-pink', bg: 'bg-neon-pink/5' },
     { name: 'Prompt Toolkit', path: '/toolkit', icon: Terminal, color: 'text-white', bg: 'bg-white/5' },
   ];
 

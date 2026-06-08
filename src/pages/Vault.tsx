@@ -12,7 +12,7 @@ export const Vault = () => {
       >
         <div className="flex items-center gap-4 mb-4">
           <Lock className="text-neon-cyan" size={40} />
-          <h1 className="text-5xl font-black italic tracking-tighter">HATTERAS: THE VAULT</h1>
+          <h1 className="text-5xl font-black italic tracking-tighter">THE VAULT</h1>
         </div>
         <p className="text-slate-400 text-xl font-light tracking-wide">Confidential process maps and secure SOPs.</p>
       </motion.div>

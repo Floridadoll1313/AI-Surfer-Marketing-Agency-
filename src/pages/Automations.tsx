@@ -1,49 +1,48 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Bot, Terminal, Activity, Zap } from 'lucide-react';
+import { Bot, Terminal, Activity, Zap, LogIn } from 'lucide-react';
+import { GoogleTasks } from '../components/workspace/GoogleTasks';
+import { GoogleCalendar } from '../components/workspace/GoogleCalendar';
+import { GoogleMail } from '../components/workspace/GoogleMail';
+import { GoogleForms } from '../components/workspace/GoogleForms';
+import { useAuth } from '../components/AuthProvider';
+
+import { GoogleKeep } from '../components/workspace/GoogleKeep';
 
 export const Automations = () => {
+  const { user, login } = useAuth();
+
   return (
-    <div className="max-w-6xl mx-auto py-12">
+    <div className="max-w-7xl mx-auto py-12 px-6">
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="mb-12"
+        className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
       >
-        <div className="flex items-center gap-4 mb-4">
-          <Bot className="text-neon-cyan" size={40} />
-          <h1 className="text-5xl font-black italic tracking-tighter">FRISCO: AUTOMATIONS</h1>
-        </div>
-        <p className="text-slate-400 text-xl font-light tracking-wide">Live system feeds and autonomous agents.</p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <div className="glass-card p-8 rounded-2xl border border-white/5">
-          <Terminal className="text-neon-cyan mb-6" size={32} />
-          <h3 className="text-2xl font-bold mb-4">Autonomous Agents</h3>
-          <p className="text-slate-400 leading-relaxed">
-            Deploying AI agents that can perform complex tasks independently. From 
-            customer support to data analysis, our agents work 24/7.
-          </p>
+        <div>
+          <div className="flex items-center gap-4 mb-4">
+            <Bot className="text-neon-cyan" size={40} />
+            <h1 className="text-5xl font-black italic tracking-tighter uppercase text-white">Workspace Core</h1>
+          </div>
+          <p className="text-slate-400 text-xl font-light tracking-wide">Live system feeds and authorized Workspace bindings.</p>
         </div>
         
-        <div className="glass-card p-8 rounded-2xl border border-white/5">
-          <Activity className="text-neon-pink mb-6" size={32} />
-          <h3 className="text-2xl font-bold mb-4">Live Monitoring</h3>
-          <p className="text-slate-400 leading-relaxed">
-            Real-time tracking of your automated systems. Get instant alerts and 
-            detailed logs to ensure everything is running smoothly.
-          </p>
-        </div>
+        {!user && (
+          <button
+            onClick={login}
+            className="flex items-center gap-2 px-6 py-3 bg-neon-cyan text-black rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white transition-colors h-fit"
+          >
+            <LogIn size={16} /> Authorize Workspace
+          </button>
+        )}
+      </motion.div>
 
-        <div className="glass-card p-8 rounded-2xl border border-white/5 col-span-full">
-          <Zap className="text-neon-green mb-6" size={32} />
-          <h3 className="text-2xl font-bold mb-4">Instant Execution</h3>
-          <p className="text-slate-400 leading-relaxed">
-            Triggering actions based on complex events and conditions. Our automation 
-            engine provides the speed and reliability your business demands.
-          </p>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <GoogleTasks />
+        <GoogleKeep />
+        <GoogleCalendar />
+        <GoogleMail />
+        <GoogleForms />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-16">
@@ -61,10 +60,6 @@ export const Automations = () => {
             <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
               <h4 className="text-white font-bold mb-2">2. Tool Integration</h4>
               <p className="text-slate-400 text-sm">Agents are equipped with custom API tools, allowing them to perform actions like searching the web, updating records, or sending emails.</p>
-            </div>
-            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-              <h4 className="text-white font-bold mb-2">3. Continuous Loops</h4>
-              <p className="text-slate-400 text-sm">Autonomous loops run 24/7, monitoring for specific conditions and executing multi-step tasks without human intervention.</p>
             </div>
           </div>
         </motion.div>
@@ -87,20 +82,11 @@ export const Automations = () => {
             </div>
             <div className="flex gap-4">
               <div className="w-12 h-12 bg-neon-cyan/10 rounded-xl flex items-center justify-center border border-neon-cyan/20 shrink-0">
-                <Terminal size={20} className="text-neon-cyan" />
+                <Activity size={20} className="text-neon-cyan" />
               </div>
               <div>
-                <h4 className="text-white font-bold mb-1">Cost Reduction</h4>
-                <p className="text-slate-400 text-sm">Automating complex cognitive tasks significantly reduces operational overhead and the cost of scaling internal processes.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-12 h-12 bg-neon-green/10 rounded-xl flex items-center justify-center border border-neon-green/20 shrink-0">
-                <Activity size={20} className="text-neon-green" />
-              </div>
-              <div>
-                <h4 className="text-white font-bold mb-1">Risk Mitigation</h4>
-                <p className="text-slate-400 text-sm">Live monitoring and autonomous guards ensure that critical systems stay within defined bounds, preventing costly downtime.</p>
+                <h4 className="text-white font-bold mb-1">Live Synchronization</h4>
+                <p className="text-slate-400 text-sm">Real-time binding to your Google Workspace account ensures seamless operations and data continuity.</p>
               </div>
             </div>
           </div>

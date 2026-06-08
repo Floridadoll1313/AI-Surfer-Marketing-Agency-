@@ -32,7 +32,7 @@ export const AISurfer = () => {
   ];
 
   const getAI = () => {
-    const key = process.env.API_KEY || process.env.GEMINI_API_KEY;
+    const key = import.meta.env.VITE_GOOGLE_API_KEY || import.meta.env.VITE_GEMINI_API_KEY;
     if (!key) throw new Error('Neural key not found. Please configure in AI Studio.');
     return new GoogleGenAI({ apiKey: key });
   };
@@ -63,7 +63,7 @@ export const AISurfer = () => {
 
       const personaData = personas.find(p => p.id === selectedPersona) || personas[0];
       const config: any = {
-        systemInstruction: `${personaData.instruction} You are currently acting within the Hatteras Digital Collective environment.`,
+        systemInstruction: `${personaData.instruction} You are currently acting within the AI Studio environment.`,
       };
 
       if (highThinking && modelType === 'pro') {

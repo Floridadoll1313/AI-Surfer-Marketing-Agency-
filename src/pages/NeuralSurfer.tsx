@@ -35,7 +35,7 @@ export const NeuralSurfer = () => {
 
     try {
       // In AI Studio, GEMINI_API_KEY is automatically available in the environment
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
+      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY || '' });
       
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
@@ -44,7 +44,7 @@ export const NeuralSurfer = () => {
           parts: [{ text: m.content }]
         })),
         config: {
-          systemInstruction: "You are the Ocean Tide Drop AI Surfer, a digital navigator for the Hatteras Collective. You help users understand AI, automation, and the digital dunes. Use oceanic metaphors and maintain a sleek, technical, yet adventurous tone. Your goal is to guide users through the informational waves of the digital reef.",
+          systemInstruction: "You are the AI Surfer for AI Studio, a digital navigator for the agency. You help users understand AI, automation, and marketing capabilities. Maintain a sleek and technical tone. Your goal is to guide users through our marketing services.",
         }
       });
 
@@ -192,7 +192,7 @@ export const NeuralSurfer = () => {
         </div>
         <div className="flex gap-4">
           <span className="text-neon-cyan">Model: Gemini 3 Flash</span>
-          <span>© Hatteras Digital Collective</span>
+          <span>© AI Studio</span>
         </div>
       </div>
     </div>

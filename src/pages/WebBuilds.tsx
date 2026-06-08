@@ -12,7 +12,7 @@ export const WebBuilds = () => {
       >
         <div className="flex items-center gap-4 mb-4">
           <Globe className="text-neon-cyan" size={40} />
-          <h1 className="text-5xl font-black italic tracking-tighter">RODANTHE: WEB BUILDS</h1>
+          <h1 className="text-5xl font-black italic tracking-tighter">WEB BUILDS</h1>
         </div>
         <p className="text-slate-400 text-xl font-light tracking-wide">Frontend & Backend Architecture. High-performance digital structures.</p>
       </motion.div>

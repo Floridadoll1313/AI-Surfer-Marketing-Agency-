@@ -23,7 +23,6 @@ import { SupabaseVault } from './pages/SupabaseVault';
 import { Profile } from './pages/Profile';
 import { Dashboard } from './pages/Dashboard';
 import { MemberDirectory } from './pages/MemberDirectory';
-import { HatterasMap } from './pages/HatterasMap';
 import { Marketplace } from './pages/Marketplace';
 import { News } from './pages/News';
 import { PromptToolkit } from './pages/PromptToolkit';
@@ -41,11 +40,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           
           {/* Member Protected Village Routes */}
-          <Route path="/rodanthe" element={<SubscriptionGate requiredTier="technologist"><WebBuilds /></SubscriptionGate>} />
-          <Route path="/avon" element={<SubscriptionGate requiredTier="technologist"><GameBuilds /></SubscriptionGate>} />
-          <Route path="/buxton" element={<SubscriptionGate requiredTier="technologist"><Workflows /></SubscriptionGate>} />
-          <Route path="/frisco" element={<SubscriptionGate requiredTier="architect"><Automations /></SubscriptionGate>} />
-          <Route path="/hatteras" element={<SubscriptionGate requiredTier="architect"><Vault /></SubscriptionGate>} />
+          <Route path="/web-builds" element={<SubscriptionGate requiredTier="technologist"><WebBuilds /></SubscriptionGate>} />
+          <Route path="/game-builds" element={<SubscriptionGate requiredTier="technologist"><GameBuilds /></SubscriptionGate>} />
+          <Route path="/workflows" element={<SubscriptionGate requiredTier="technologist"><Workflows /></SubscriptionGate>} />
+          <Route path="/automations" element={<SubscriptionGate requiredTier="architect"><Automations /></SubscriptionGate>} />
+          <Route path="/vault" element={<SubscriptionGate requiredTier="architect"><Vault /></SubscriptionGate>} />
           
           <Route path="/memorial" element={<Memorial />} />
           <Route path="/pricing" element={<Pricing />} />
@@ -63,7 +62,6 @@ export default function App() {
           <Route path="/surfer" element={<NeuralSurfer />} />
           <Route path="/supabase-vault" element={<SubscriptionGate><SupabaseVault /></SubscriptionGate>} />
           <Route path="/directory" element={<SubscriptionGate><MemberDirectory /></SubscriptionGate>} />
-          <Route path="/map" element={<SubscriptionGate><HatterasMap /></SubscriptionGate>} />
           <Route path="/marketplace" element={<SubscriptionGate><Marketplace /></SubscriptionGate>} />
           <Route path="/news" element={<SubscriptionGate><News /></SubscriptionGate>} />
           <Route path="/toolkit" element={<SubscriptionGate><PromptToolkit /></SubscriptionGate>} />

@@ -19,7 +19,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           <span>© 2026 Ocean Tide Drop</span>
           <span className="text-neon-cyan">Status: Optimized</span>
         </div>
-        <div className="text-slate-700 italic">Hatteras Island Digital Collective</div>
+        <div className="text-slate-700 italic">AI Studio</div>
       </footer>
     </div>
   );
